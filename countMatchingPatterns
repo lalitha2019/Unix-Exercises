@@ -1,0 +1,40 @@
+#Files:
+#1.txt, 2.txt, 3.txt
+#These files have some data which includeds "United States"
+
+#Example 1:
+#to count the number of occurrences of "United States" in all those files put together.
+#This can be achieved using the below command:
+grep "United States" *.txt | wc -l
+
+#Example 2:
+#Print only the matching string "United States" and not the entire line with matching string:
+#This can be achieved using the below command:
+grep -o "United States" *.txt
+
+#Notes
+#whether we use "-o" option or not, the count may be the same, if there is only one matching pattern per line
+#"-o" option comes in handy when there are multiple matching patterns in a single line
+# as the below example demonstrates
+#===============================================================================================================================
+
+grep "USA" multipleMatchesInSingleLine.txt
+#output
+#X lives in USA and Y lives in UK. Z lives in USA too.
+#Do A, B and C live in USA?
+#I think D lives in USA
+
+grep -o "USA" multipleMatchesInSingleLine.txt
+#Output
+#USA
+#USA
+#USA
+#USA
+
+grep -o "USA" multipleMatchesInSingleLine.txt | wc -l
+#Output
+#4
+grep  "USA" multipleMatchesInSingleLine.txt | wc -l
+#Output
+#3
+#================================================================================================================================
